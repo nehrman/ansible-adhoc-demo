@@ -2,6 +2,12 @@
 # Run ad-hoc command on host
 - hosts: all
   tasks:
-    - name: Execute a list of command if specified
+    - name: Execute a list of command if specified on Linux hosts
       shell: "{{ item }}"
       with_items: "{{ command | default([]) }}"
+      when: ansible_os_family == "RedHat"
+
+    - name: Execute a list of command if specified on Windows hosts
+      win_command: "{{ item }}"
+      with_items: "{{ command | default([]) }}"
+      when: ansible_os_family == "Windows"
