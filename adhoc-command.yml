@@ -11,3 +11,8 @@
       win_command: "{{ item }}"
       with_items: "{{ command | default([]) }}"
       when: ansible_os_family == "Windows"
+      register: win_command_result
+
+    - debug:
+        var: win_command_result
+        verbosity: 2
