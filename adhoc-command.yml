@@ -1,0 +1,7 @@
+---
+# Run ad-hoc command on host
+- hosts: all
+  tasks:
+    - name: Execute a list of command if specified
+      shell: "{{ item }}"
+      with_items: "{{ command | default([]) }}"
