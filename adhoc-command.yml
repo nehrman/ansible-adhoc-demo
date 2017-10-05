@@ -8,12 +8,6 @@
       when: ansible_os_family == "RedHat"
 
     - name: Execute a list of command if specified on Windows hosts
-      win_command: "{{ item }}"
+      win_command: "{{ item }}" >> c:\qdhoc.log
       with_items: "{{ command | default([]) }}"
-      when: ansible_os_family == "Windows"
-      register: win_command_result
-
-    - debug:
-        var: win_command_result
-        verbosity: 2
       when: ansible_os_family == "Windows"
