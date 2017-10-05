@@ -3,7 +3,7 @@
 - hosts: all
   tasks:
     - name: Execute a list of command if specified on Linux hosts
-      shell: "{{ item }}"
+      shell: "{{ item }}" >> /tmp/adhoc.log
       with_items: "{{ command | default([]) }}"
       when: ansible_os_family == "RedHat"
 
