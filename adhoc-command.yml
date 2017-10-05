@@ -8,6 +8,6 @@
       when: ansible_os_family == "RedHat"
 
     - name: Execute a list of command if specified on Windows hosts
-      win_shell: "{{ item }}" ">> c:\adhoc.log"
+      win_shell: "{{ item }}" >> c:\adhoc.log"
       with_items: "{{ command | default([]) }}"
       when: ansible_os_family == "Windows"
