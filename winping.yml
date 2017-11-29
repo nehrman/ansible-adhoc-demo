@@ -1,0 +1,7 @@
+---
+- hosts: windows
+  become: true
+  become_method: runas
+  
+  tasks:
+    - win_ping: 
